@@ -5,6 +5,8 @@
 // paragrafo.innerHTML = 'Escolha um número entre 1 e 10';
 
 //--------DEIXANDO O CÓDIGO MAIS ESTRUTURADO E MENOS VERBOSO ---------//
+let listaDeNumerosSorteados = [];
+let numeroLimite = 10;
 let numeroSecreto = gerarNumeroAleatorio();
 let tentativas = 1;
 
@@ -48,7 +50,21 @@ function verificarChute() {
 //------ UTILIZANDO O 'return', que chamará a função da variável numeroSecreto ------//
 
 function gerarNumeroAleatorio () {
-    return parseInt(Math.random() * 10 + 1)
+    // return parseInt(Math.random() * 10 + 1)
+    let numeroEscolhido = parseInt(Math.random() * numeroLimite + 1);
+    let quantidadeDeElementosNaLista = listaDeNumerosSorteados.length;
+
+    if (quantidadeDeElementosNaLista == numeroLimite) {
+        listaDeNumerosSorteados = [];
+    }
+
+    if (listaDeNumerosSorteados.includes(numeroEscolhido)) {
+        return gerarNumeroAleatorio();
+    } else {
+        listaDeNumerosSorteados.push(numeroEscolhido);
+        console.log(listaDeNumerosSorteados);
+        return numeroEscolhido;
+    }
 }
 
 // limpando o campo do input após digitar um número
@@ -58,7 +74,7 @@ function limparCampo () {
 }
 
 // reiniciando o jogo
-function reiniciarjogo () {
+function reiniciarJogo () {
     numeroSecreto = gerarNumeroAleatorio(); // número secreto foi sorteado
     limparCampo(); // o campo do input foi limpo
     tentativas = 1; // as tentativas foram reiniciadas a partir do 1
@@ -121,7 +137,7 @@ function reiniciarjogo () {
 //   console.log(resultado); 
 
 
-// --------------- DESAFIOS 02 ------------------//
+// --------------- DESAFIOS 02 - Tipos de funções ------------------//
 
 // 1 - Crie uma função que calcule o índice de massa corporal (IMC) de uma pessoa, a partir de sua altura, em metros, e peso, em quilogramas, que serão recebidos como parâmetro:
 
@@ -204,3 +220,34 @@ function reiniciarjogo () {
 //   // Exemplo de uso
 //   let numero = 7;
 //   mostrarTabuada(numero);
+
+// --------------- DESAFIOS 02 - Arrays ------------------//
+
+// 1 - Crie uma lista vazia, com o nome listaGenerica.
+
+// let listaGenerica = [];
+
+// 2 - Crie uma lista de linguagens de programação chamada linguagensDeProgramacao.
+
+// let linguagensDeProgramacao = ['JavaScript', 'C', 'C++', 'Kotlin', 'Python'];
+
+// 3 - Adicione à lista linguagensDeProgramacao os seguintes elementos: Java, Ruby e GoLang.
+
+// let linguagensDeProgramacao = ['JavaScript', 'C', 'C++', 'Kotlin', 'Python'];
+// linguagensDeProgramacao.push('Java', 'Ruby', 'GoLang');
+// Lista ao final: ['JavaScript', 'C', 'C++', 'Kotlin', 'Python', 'Java', 'Ruby', 'GoLang']
+
+// 4 - Crie uma lista com 3 nomes e exiba no console apenas o primeiro elemento.
+
+// nomes = ['JavaScript', 'Python', 'Go'];
+// console.log(nomes[0]);
+
+// 5 - Crie uma lista com 3 nomes e exiba no console apenas o segundo elemento.
+
+// nomes = ['JavaScript', 'Python', 'Go'];
+// console.log(nomes[1]);
+
+// 6 - Crie uma lista com 3 nomes e exiba no console apenas o último elemento.
+
+// nomes = ['JavaScript', 'Python', 'Go'];
+// console.log(nomes[2]);
